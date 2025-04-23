@@ -4,7 +4,7 @@
 
 - Version: 1.0.0
 - Certified: No
-- Publisher: anonyges@gmail.com  
+- Publisher: <anonyges@gmail.com>  
 - Compatibility: 7.5.0 and later
 
 ## Overview
