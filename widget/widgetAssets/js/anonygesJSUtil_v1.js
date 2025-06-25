@@ -25,11 +25,16 @@
 
 
         function jinja(template, value) {
+            // template: string = "{{vars.input}}"
+            // value: object = obj
+
             if (typeof (template) == "object")
-                template = JSON.stringify(template);
+                template = JSON.stringify(template)
+            // typecast template to string if received as object
 
             if (typeof (value) == "string")
                 value = JSON.parse(value);
+            // typecast value to object if received as string
 
             return $resource(API.WORKFLOW + "api/jinja-editor/?format=json")
                 .save({ "template": template, "values": value })

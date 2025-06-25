@@ -1,18 +1,18 @@
 /* 
   author: anonyges@gmail.com
-  modified: 250102 
+  modified: 250625 
 */
-'use strict';
+"use strict";
 (function () {
   angular
-    .module('cybersponse')
-    .controller('editCommunity_anonyges_widget_utilities100Ctrl', editCommunity_anonyges_widget_utilities100Ctrl);
+    .module("cybersponse")
+    .controller("editCommunityAnonygesWidgetUtilities100Ctrl", editCommunityAnonygesWidgetUtilities100Ctrl);
 
-  editCommunity_anonyges_widget_utilities100Ctrl.$inject = ['$scope', '$uibModalInstance', 'config', 'Field', 'anonygesJSUtil_v1', 'anonygesPlaybookUtil_v1', 'anonygesFormEntityServiceUtil_v1', 'anonygesAuditlogUtil_v1'];
+  editCommunityAnonygesWidgetUtilities100Ctrl.$inject = ["$scope", "$uibModalInstance", "config", "Field", "anonygesJSUtil_v1", "anonygesPlaybookUtil_v1", "anonygesFormEntityServiceUtil_v1", "anonygesAuditlogUtil_v1"];
 
-  function editCommunity_anonyges_widget_utilities100Ctrl($scope, $uibModalInstance, config, Field, anonygesJSUtil_v1, anonygesPlaybookUtil_v1, anonygesFormEntityServiceUtil_v1, anonygesAuditlogUtil_v1) {
+  function editCommunityAnonygesWidgetUtilities100Ctrl($scope, $uibModalInstance, config, Field, anonygesJSUtil_v1, anonygesPlaybookUtil_v1, anonygesFormEntityServiceUtil_v1, anonygesAuditlogUtil_v1) {
     $scope.config = config;
-    $scope.container_uid = "dc-" + crypto.randomUUID();
+    $scope.container_uid = "ap-" + crypto.randomUUID();
 
 
 
@@ -39,19 +39,19 @@
 
     $scope.$watch("dp_playbook_1.scope.config.data_cs_selected_playbook", function (newValue, oldValue) {
       if (newValue !== undefined && newValue !== null) {
-        $scope.$broadcast("d_playbook_status", { "status": "active", "workflow_id": true })
+        $scope.$broadcast("a_playbook_status", { "status": "active", "workflow_id": true })
         $scope.dp_playbook_1.execute_playbook(newValue);
       }
     });
 
 
-    $scope.dp_playbook_1.scope.$on('d_playbook_status', function (event, json_data) {
-      console.debug('d_playbook_status', json_data);
+    $scope.dp_playbook_1.scope.$on("a_playbook_status", function (event, json_data) {
+      console.debug("a_playbook_status", json_data);
 
       const playbook_status = json_data.status;
       const response = json_data.response;
 
-      if (playbook_status === 'finished' && response['@type'] === 'Workflow') {
+      if (playbook_status === "finished" && response["@type"] === "Workflow") {
         $scope.dp_playbook_1.scope.data_cs_playbook_result_model = response;
       }
       else {
@@ -76,8 +76,8 @@
     $scope.dp_formentityservice_1 = anonygesFormEntityServiceUtil_v1.init($scope, $scope.config.dp_formentityservice_1, "form_dp_formentityservice_1");
 
 
-    // $scope.dp_formentityservice_1.scope.$on('d_field_updated', function (event, json_data) {
-    //   console.debug('d_field_updated', json_data);
+    // $scope.dp_formentityservice_1.scope.$on("d_field_updated", function (event, json_data) {
+    //   console.debug("d_field_updated", json_data);
     // });
     // -------------------------------------------------------- FormEntityService Util end  --------------------------------------------------------
 
@@ -92,7 +92,7 @@
 
     // -------------------------------------------------------- Common start  --------------------------------------------------------
     $scope.$on("$destroy", function () {
-      $scope.$broadcast('$destory');
+      $scope.$broadcast("$destory");
     });
     // -------------------------------------------------------- Common end  --------------------------------------------------------
 
@@ -104,7 +104,7 @@
 
 
     function bt_cancel() {
-      $uibModalInstance.dismiss('cancel');
+      $uibModalInstance.dismiss("cancel");
     }
 
 

@@ -1,8 +1,8 @@
 {
-    "name": "community_anonyges_widget_utilities",
+    "name": "communityAnonygesWidgetUtilities",
     "version": "1.0.0",
-    "title": "anonyges Widget Utility",
-    "subTitle": "community_anonyges_widget_utilities",
+    "title": "Community anonyges Widget Utility",
+    "subTitle": "base library to run anonyges@gmail widgets",
     "metadata": {
         "pages": [
             "View Panel",

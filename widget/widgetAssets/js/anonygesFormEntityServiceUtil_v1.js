@@ -31,14 +31,14 @@
       scope.config.selected_module_field_names = anonygesJSUtil_v1.default_value_if_undefined(scope.config.selected_module_field_names, []);
 
 
-      scope.$on("d_field_override_value", function (event, data) {
+      scope.$on("a_field_override_value", function (event, data) {
         console.debug(`d_field_override_value called from ${scope.$id}`, scope.config.selected_module_field_names, data);
 
         scope.manual_field_override[data.field_name] = anonygesJSUtil_v1.default_value_as_object(scope.manual_field_override[data.field_name]);
         scope.manual_field_override[data.field_name] = Object.assign({}, scope.manual_field_override[data.field_name], data.records);
 
         if (scope.config.selected_module_field_names.includes(data.field_name)) {
-          scope.$emit("d_field_updated", { "field_name": data.field_name });
+          scope.$emit("a_field_updated", { "field_name": data.field_name });
         }
       });
 
@@ -48,7 +48,7 @@
 
         for (const _field_name of field_names) {
           if (scope.config.selected_module_field_names.includes(_field_name)) {
-            scope.$emit("d_field_updated", { "field_name": _field_name });
+            scope.$emit("a_field_updated", { "field_name": _field_name });
           }
         }
       });
@@ -131,7 +131,7 @@
                 .$promise
                 .then(function (_response) {
                   scope.$emit(
-                    "d_field_override_value",
+                    "a_field_override_value",
                     {
                       field_name: _field_name,
                       records: _response["hydra:member"]
@@ -244,7 +244,7 @@
       function bt_add_module_field_to_watch(_field_name) {
         scope.config.selected_module_field_names.push(_field_name);
         scope.option_module_field_names.splice(scope.option_module_field_names.indexOf(_field_name), 1);
-        scope.$emit("d_add_module_field_to_watch", { "field_name": _field_name });
+        scope.$emit("a_add_module_field_to_watch", { "field_name": _field_name });
       }
 
 
@@ -254,7 +254,7 @@
         }
         scope.option_module_field_names.push(_field_name);
         scope.config.selected_module_field_names.splice(scope.config.selected_module_field_names.indexOf(_field_name), 1);
-        scope.$emit("d_remove_module_field_to_watch", { "field_name": _field_name });
+        scope.$emit("a_remove_module_field_to_watch", { "field_name": _field_name });
       }
 
 
