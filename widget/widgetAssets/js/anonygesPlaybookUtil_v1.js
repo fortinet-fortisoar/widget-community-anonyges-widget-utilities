@@ -98,7 +98,7 @@
             function check_playbook_completion(_json_data) {
                 if (_json_data.task_id && playbook_task_id === _json_data.task_id && _json_data.status && "null" === _json_data.parent_wf) {
                     scope.playbook_status = _json_data.status;
-                    scope.$emit('d_playbook_status', { 'status': scope.playbook_status, 'workflow_id': format_workflow_id(_json_data["instance_ids"]), 'response': _json_data });
+                    scope.$emit('a_playbook_status', { 'status': scope.playbook_status, 'workflow_id': format_workflow_id(_json_data["instance_ids"]), 'response': _json_data });
                     if ("finished" === _json_data.status || "finished_with_error" === _json_data.status) {
                         get_playbook_result();
                     }
@@ -127,7 +127,7 @@
                     .$promise
                     .then(function (_response) {
                         scope.playbook_status = _response["hydra:member"][0]["status"];
-                        scope.$emit('d_playbook_status', { 'status': scope.playbook_status, 'workflow_id': format_workflow_id(_response["hydra:member"][0]["@id"]), 'response': _response });
+                        scope.$emit('a_playbook_status', { 'status': scope.playbook_status, 'workflow_id': format_workflow_id(_response["hydra:member"][0]["@id"]), 'response': _response });
 
                         if ("finished" === scope.playbook_status || "finished_with_error" === scope.playbook_status) {
                             get_playbook_last_step_result(_response["hydra:member"][0]["@id"]);
@@ -161,7 +161,7 @@
                     .$promise
                     .then(function (_response) {
                         scope.playbook_status = _response["status"];
-                        scope.$emit('d_playbook_status', { 'status': scope.playbook_status, 'workflow_id': format_workflow_id(_response["@id"]), 'response': _response });
+                        scope.$emit('a_playbook_status', { 'status': scope.playbook_status, 'workflow_id': format_workflow_id(_response["@id"]), 'response': _response });
                     })
                     .catch(function (_error) {
                         scope.playbook_status = "unknown error"
